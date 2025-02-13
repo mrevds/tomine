@@ -7,15 +7,19 @@ body {
     background-color: #f0f0f0;
     font-family: sans-serif;
     overflow: hidden;
+    margin: 0 auto;
+    padding: 0 auto;
 }
 
 .container {
-    width: 375px;
-    height: 812px;
+    width: 100%; /* Контейнер на всю ширину экрана */
+    height: 100vh; /* Контейнер на всю высоту экрана */
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background-color: #262626; /* Цвет фона Инстаграма */
+    background-color: #262626;
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Вертикальное расположение элементов */
 }
 
 .stories-bar {
@@ -385,3 +389,4 @@ p {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
