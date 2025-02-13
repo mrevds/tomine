@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+
+
+
+body {
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    width: 375px;
+    height: 812px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #262626; /* Цвет фона Инстаграма */
+}
+
+.stories-bar {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: calc(100% - 40px);
+    display: flex;
+}
+
+.story-dot {
+    width: calc(100% / 8 - 10px); /* 8 - количество историй */
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 0 5px;
+    border-radius: 2px;
+    z-index: 20;
+}
+
+.story-dot.active {
+    background-color: white;
+}
+
+.story {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    color: white; /* Цвет текста в историях */
+}
+
+.story.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.story-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.story-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.story-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+}
+
+.story-footer input {
+    width: calc(100% - 60px);
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    position: relative; /* Это важно для правильного позиционирования */
+    z-index: 5;
+    
+}
+.heart-icon {
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 5;
+    
+}
+
+.heart-icon.active {
+    color: red; /* Красное сердечко при нажатии - мгновенно */
+    transform: scale(1.1); /* Плавное увеличение размера */
+}
+
+.heart-icon.animate {
+    animation: heartAnimation 1s linear;
+}
+
+.heart-icon.flying {
+    position: absolute;
+    opacity: 1;
+    z-index: 10;
+    animation: heartAnimation 1.5s linear forwards;
+    color: red;
+    font-size: 20px;
+}
+
+@keyframes heartAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-150px); /* дальность полета */
+        opacity: 0;
+    }
+}
+
+h1, h2 {
+    color: white;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый цвет */
+    margin-bottom: 20px;
+}
+
+
+#story1 {
+    background: linear-gradient(to bottom, #efbbd4, #f0f0ff); /* Нежный градиент */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#story1 .story-content h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Лёгкая тень под текстом */
+    font-family: 'Playfair Display', serif; /* Утончённый шрифт с засечками */
+    font-size: 2em; /* Примерный размер шрифта */
+}
+
+
+#story2 {
+    background-color: #9b59b6; /* Фиолетовый фон */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("forest.jpg"); /* Текстура ткани или бумаги */
+    background-size: cover;
+}
+
+#story2 .story-content h2 {
+    font-family: 'Oswald', sans-serif; /* Декоративный шрифт */
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#story3 {
+    background-color: #1a1a1a; /* Тёмно-синий фон */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* Для анимации звёзд */
+}
+
+#story3 .story-content h2 {
+    font-family: 'Roboto Mono', monospace; /* Моноширинный шрифт */
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: glow 2s ease-in-out infinite alternate; /* Анимация свечения */
+}
+
+/* Анимация свечения текста */
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+    }
+    to {
+        text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Анимация падающих звёзд */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    animation: falling 3s linear infinite; /* Длительность и скорость падения */
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-20px); /* Начальное положение за экраном */
+        opacity: 0;
+    }
+    20% {
+        opacity: 1; /* Появление звезды */
+    }
+    100% {
+        transform: translateY(100vh); /* Конечное положение за экраном */
+        opacity: 0;
+    }
+}
+
+#story4 {
+    background: linear-gradient(to bottom, #3498db, #e74c3c); /* Градиент от синего к красному */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* Для эффекта волн */
+}
+
+#story4 .story-content h2 {
+    font-size: 3em;
+    font-family: 'Pacifico', cursive; /* Курсивный шрифт */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: wave 5s linear infinite; /* Анимация волн */
+}
+
+/* Анимация волн */
+@keyframes wave {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px); /* Движение вверх */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Дополнительные стили для фона (опционально) */
+#story4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("waves.jpg"); /* Паттерн волн */
+    background-size: cover;
+    opacity: 0.3; /* Полупрозрачность */
+    animation: wave 10s linear infinite; /* Более медленная анимация волн */
+}
+
+#story5 {
+    background: linear-gradient(to bottom, #ef9dc5, #f8a2e5);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+}
+
+#story5 .story-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#story6 {
+    background: linear-gradient(to bottom, #60573b, #8c9566);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    overflow: hidden; /* для огоньков */
+}
+
+#story6 .story-content h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8em;
+}
+
+/* Анимация огоньков */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 2s linear infinite;
+    opacity: 0; /* изначально невидимы */
+}
+
+@keyframes twinkle {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+#story7 {
+    background-color: #f87979; /* Светло-серый фон */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+}
+
+#story7 .story-content h2 {
+    font-family: 'Playfair Display', serif; /* Элегантный шрифт с засечками */
+    font-size: 1.6em;
+}
+
+#story8 {
+    background: url("dream.jpg"); /* Изображение неба или цветов */
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff; /* Белый цвет текста */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Тень для выразительности */
+    animation: fadeIn 1s ease-in-out; /* Плавное появление текста */
+}
+
+#story8 .story-content h2 {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 2.2em;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
